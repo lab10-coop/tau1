@@ -2,11 +2,15 @@
 
 ## run a node
 
+Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
+
 **Run**  
 `./parity -c node.toml`
 
 ## run a trustnode
   
+Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
+
 **Add your _mining key_**
 * Copy the keyfile (json) of your mining key into `data/keys/tau1.artis` (create directory if it doesn't exist yet). The filename doesn't matter.
 * Create a file `password.txt` containing the password to unlock the keyfile.
