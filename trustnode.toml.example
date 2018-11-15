@@ -1,0 +1,33 @@
+https://wiki.parity.io/Configuring-Parity-Ethereum.html#config-file
+
+[parity]
+chain = "spec.json"
+base_path = "data"
+auto_update = "none"
+
+# name of your node
+identity = <PLACEHOLDER>
+
+[network]
+allow_ips = "public"
+bootnodes = ["enode://65ef6f4a59fcbbd0567de0671588ab03e6d0628005f5b514af3295736a76f3ea30b5ecde8e64a5cc0aa20bfa8c5b7bb425470b8e9c9e6b05b34892f2a7f7ec15@94.130.160.202:30303"]
+reserved_peers="bootnodes.txt"
+
+[account]
+password = [ "password.txt" ]
+
+# address of your "mining key"
+unlock = [ <PLACEHOLDER> ]
+
+[mining]
+usd_per_tx = "0"
+min_gas_price = 1000000000
+force_sealing = true
+gas_floor_target = "8000000"
+reseal_on_txs = "none"
+
+# address of your "mining key"
+engine_signer = <PLACEHOLDER>
+
+[misc]
+log_file = "parity.log"
