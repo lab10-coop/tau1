@@ -30,6 +30,7 @@ A trustnode is supposed to be always on, thus running it in an interactive shell
 This repository includes a systemd template config you can use to make parity a system service.  
 The following steps require root privileges (sudo).  
 * Copy `artis-tau1-parity.service.example` to `/etc/systemd/system/artis-tau1-parity.service` (if that directory doesn't exist, you're likely not using systemd and can't use this method).
+* Open the copied file and set _User_, _Group_, _WorkingDirectory_ and _ExecStart_ to the right values for your system
 * Start the service: `systemctl start artis-tau1-parity`
 * Flag service to be started on boot: `systemctl enable artis-tau1-parity`
 
