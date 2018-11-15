@@ -2,14 +2,17 @@
 
 ## run a node
 
-Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
-
-**Run**  
-`./parity -c node.toml`
+* `git clone https://github.com/lab10-coop/tau1`
+* `cd tau1`
+* Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
+* Run: `./parity -c node.toml`
 
 ## run a trustnode
   
-Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
+**Prepare**
+* `git clone https://github.com/lab10-coop/tau1`
+* `cd tau1`
+* Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
 
 **Add your _mining key_**
 * Copy the keyfile (json) of your mining key into `data/keys/tau1.artis` (create directory if it doesn't exist yet). The filename doesn't matter.
