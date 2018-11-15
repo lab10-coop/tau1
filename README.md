@@ -45,7 +45,7 @@ Once you have Metamask installed:
 * (optional, but convenient) Click _show advanced options_, then enter "ATS" for _Symbol_ and "ARTIS tau1" for _Nickame_
 * Click _SAVE_
 
-![Metamask config](metamask_config_screenshot.png)
+<img src="metamask_config_screenshot.png" width="400px">
 
 ## get ATS
 
