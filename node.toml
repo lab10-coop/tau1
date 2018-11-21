@@ -2,7 +2,6 @@
 
 [parity]
 base_path = "data"
-identity = "node"
 chain = "spec.json"
 
 auto_update = "none"
@@ -10,7 +9,6 @@ auto_update = "none"
 [network]
 # don't attempts to connect to non-public IPs (hosters do not like that)
 allow_ips = "public"
-bootnodes = ["enode://65ef6f4a59fcbbd0567de0671588ab03e6d0628005f5b514af3295736a76f3ea30b5ecde8e64a5cc0aa20bfa8c5b7bb425470b8e9c9e6b05b34892f2a7f7ec15@94.130.160.202:30303"]
 
 [misc]
 log_file = "parity.log"
