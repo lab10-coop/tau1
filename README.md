@@ -36,6 +36,55 @@ The following steps require root privileges (sudo).
 
 You can check the status of the service with `systemctl status artis-tau1-parity`.
 
+## get listed in status dashboard
+
+There's a nice network status dashboard at http://status.tau1.artis.network/  
+It only lists nodes which want to be listed.  
+In order to be on the list, a dedicated status reporting application needs to run alongside parity.  
+
+If you run a trustnode, please get listed.  
+If you permanently run a normal node, a listing is also welcome!
+
+**Prepare**  
+Check which version of nodejs you have installed (if any):
+`node --version`  
+Anything newer than v6 should do.
+
+If you don't have it installed, your options depend on the operating system.
+
+Ubuntu 18.04:  
+`apt install nodejs`
+
+Ubuntu 16.04:  
+```
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs
+```
+(Of course you can take a look into `nodesource_setup.sh` before executing it with root permissions.)
+
+**Install**  
+Next, get the application:
+```
+git clone https://github.com/lab10-coop/node-status-reporter
+cd node-status-reporter
+npm install
+```
+
+**Run**  
+Now you _could_ run it with  
+`NODE_ENV=production INSTANCE_NAME=<your instance name here> WS_SERVER=http://status.tau1.artis.network WS_SECRET=ahZahhoth3engaem npm start`
+
+**Keep running**
+
+If you installed a service for parity, you should do the same for this application.
+* Copy `artis-tau1-statusreporter.service.example` to `/etc/systemd/system/artis-tau1-statusreporter.service`.
+* Open the copied file and adapt it to your needs. Important: set something for _INSTANCE_NAME_ and _CONTACT_DETAILS_ and then uncomment both.
+* Start the service: `systemctl start artis-tau1-statusreporter`
+* Flag service to be started on boot: `systemctl enable artis-tau1-statusreporter`
+
+You can check the status of the service with `systemctl status artis-tau1-statusreporter`.
+
 ## use with Metamask
 
 [Metamask](https://metamask.io/) is a browser extension which implements an Ethereum wallet. It can be used with any Ethereum compatible network.  
