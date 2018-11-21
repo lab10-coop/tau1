@@ -2,17 +2,25 @@
 
 ## run a node
 
-* `git clone https://github.com/lab10-coop/tau1`
-* `cd tau1`
-* Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
-* Run: `./parity -c node.toml`
+**Prepare**  
+```
+git clone https://github.com/lab10-coop/tau1
+cd tau1
+./download_parity.sh
+```
+
+**Run**    
+`./parity -c node.toml`
+
 
 ## run a trustnode
   
 **Prepare**
-* `git clone https://github.com/lab10-coop/tau1`
-* `cd tau1`
-* Create a symlink of the binary suited for your operating system, e.g. `ln -s parity-linux parity` for Linux.
+```
+git clone https://github.com/lab10-coop/tau1`
+cd tau1
+./download_parity.sh
+```
 
 **Add your _mining key_**
 * Copy the keyfile (json) of your mining key into `data/keys/tau1.artis` (create directory if it doesn't exist yet). The filename doesn't matter.
@@ -22,7 +30,7 @@
 * Copy `trustnode.toml.example` to `trustnode.toml`.
 * Open `trustnode.toml` with your favourite editor and replace every `<PLACEHOLDER>` entry.
 
-**Run**
+**Run**  
 `./parity -c trustnode.toml`
 
 **Keep running**  
@@ -52,10 +60,10 @@ Anything newer than v6 should do.
 
 If you don't have it installed, your options depend on the operating system.
 
-Ubuntu 18.04:  
+_Ubuntu 18.04_:  
 `apt install nodejs`
 
-Ubuntu 16.04:  
+_Ubuntu 16.04_:  
 ```
 curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
 sudo bash nodesource_setup.sh
