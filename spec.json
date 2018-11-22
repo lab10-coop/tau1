@@ -15,11 +15,14 @@
           "multi": {
             "0": {
               "safeContract": "0xf472e0e43570b9afaab67089615080cf7c20018d"
-            }
+            },
+            "446380": {
+              "safeContract": "0xeeb7ba97be4189b6b0bd3d3bd8c8a931837bec19"
+	    }
           }
         },
-        "blockRewardContractAddress": "0x3145197AD50D7083D0222DE4fCCf67d9BD05C30D",
-        "blockRewardContractTransition": 6000000
+        "blockRewardContractAddress": "0x194498eb59adc3926faa2369c378386e90508a8e",
+        "blockRewardContractTransition": 446390
       }
     }
   },
