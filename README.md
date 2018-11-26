@@ -6,7 +6,7 @@
 ```
 git clone https://github.com/lab10-coop/tau1
 cd tau1
-./download_parity.sh
+./download-parity.sh
 ```
 
 **Run**    
@@ -19,7 +19,7 @@ cd tau1
 ```
 git clone https://github.com/lab10-coop/tau1`
 cd tau1
-./download_parity.sh
+./download-parity.sh
 ```
 
 **Add your _mining key_**
