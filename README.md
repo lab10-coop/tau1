@@ -4,46 +4,129 @@
 
 **Prepare**  
 ```
+cd ~
 git clone https://github.com/lab10-coop/tau1
 cd tau1
 ./download-parity.sh
+./parity -c node.toml
 ```
+to keep node running after ssh connection is closed following link can give inspiration
+https://askubuntu.com/questions/8653/how-to-keep-processes-running-after-ending-ssh-session
+a bit downward in this guide under **Keep running** is also a explaination how to configure a service for the node
 
-**Run**    
-`./parity -c node.toml`
-
+**Upgrade**
+stop node (deepens how u started it)
+```
+cd ~
+git clone https://github.com/lab10-coop/tau1 temp/tau1
+cp -rf temp/tau1 ~/
+rm -rf temp
+cd tau1
+```
+start node (as explained in **Run a node** )
+```
+./parity -c node.toml
+```
 
 ## run a trustnode
   
 **Prepare**
 ```
-git clone https://github.com/lab10-coop/tau1`
+cd ~
+git clone https://github.com/lab10-coop/tau1
 cd tau1
 ./download-parity.sh
 ```
+start in normal node mode once so all folders are created
+```
+./parity -c node.toml
+```
+stop node after a 30 seconds
 
 **Add your _mining key_**
 * Copy the keyfile (json) of your mining key into `data/keys/tau1.artis` (create directory if it doesn't exist yet). The filename doesn't matter.
+
+u can just generate a new file and copy the content of ur json file into it
+```
+nano ~/tau1/data/keys/tau1.artis/miningkey
+```
+how to generate a new address and export it in json format is not covered in this guide
+artis addresses are generated the same way as ethereum addresses so any tool that generate ethereum addresses can be used
+example https://www.myetherwallet.com/
+
 * Create a file `password.txt` containing the password to unlock the keyfile.
+```
+nano password.txt
+```
 
 **Adapt the config**  
 * Copy `trustnode.toml.example` to `trustnode.toml`.
 * Open `trustnode.toml` with your favourite editor and replace every `<PLACEHOLDER>` entry.
 
+result looks like this please keep in mind that address from ur json file have to start with 0x upfront extend address if needed with that in configuration file
+```
+# name of your node
+identity = "GuideTestIdentity"
+
+[account]
+password = ["/root/tau1/password.txt"]
+
+# address of your "mining key"
+unlock = ["0xyouraddress"]
+
+# address of your "mining key"
+engine_signer = "0xyouraddress"
+```
+
 **Run**  
-`./parity -c trustnode.toml`
+`
+./parity -c trustnode.toml
+`
 
 **Keep running**  
 A trustnode is supposed to be always on, thus running it in an interactive shell isn't the best option.  
 This repository includes a systemd template config you can use to make parity a system service.  
 The following steps require root privileges (sudo).  
 * Copy `artis-tau1-parity.service.example` to `/etc/systemd/system/artis-tau1-parity.service` (if that directory doesn't exist, you're likely not using systemd and can't use this method).
+```
+cp ~/tau1/artis-tau1-parity.service.example /etc/systemd/system/artis-tau1-parity.service
+```
 * Open the copied file and set _User_, _Group_, _WorkingDirectory_ and _ExecStart_ to the right values for your system
-* Start the service: `systemctl start artis-tau1-parity`
-* Flag service to be started on boot: `systemctl enable artis-tau1-parity`
+```
+nano /etc/systemd/system/artis-tau1-parity.service
+```
+content of file could look like this:
+```
+[Unit]
+Description=ARTIS tau1 parity service
+After=network.target
+[Service]
+User=root
+Group=root
+WorkingDirectory=/root/tau1
+ExecStart=/root/tau1/parity --config=trustnode.toml
+Restart=always
+[Install]
+WantedBy=multi-user.target
+```
 
-You can check the status of the service with `systemctl status artis-tau1-parity`.
+* Start the service: 
+`
+systemctl start artis-tau1-parity
+`
+* Flag service to be started on boot: 
+`
+systemctl enable artis-tau1-parity
+`
 
+You can check the status of the service with 
+`
+systemctl status artis-tau1-parity
+`
+or u can get constant refreshing monitoring output of parity.log file with
+`
+tail -f -n 1000 ~/tau1/parity.log
+`
 ## get listed in status dashboard
 
 There's a nice network status dashboard at http://status.tau1.artis.network/  
@@ -82,12 +165,19 @@ npm install
 **Run**  
 Now you _could_ run it with  
 `NODE_ENV=production INSTANCE_NAME=<your instance name here> WS_SERVER=http://status.tau1.artis.network WS_SECRET=ahZahhoth3engaem npm start`
+ls -al
 
 **Keep running**
 
 If you installed a service for parity, you should do the same for this application.
 * Copy `artis-tau1-statusreporter.service.example` to `/etc/systemd/system/artis-tau1-statusreporter.service`.
+```
+cp ~/tau1/artis-tau1-statusreporter.service.example /etc/systemd/system/artis-tau1-statusreporter.service
+```
 * Open the copied file and adapt it to your needs. Important: set something for _INSTANCE_NAME_ and _CONTACT_DETAILS_ and then uncomment both.
+```
+nano /etc/systemd/system/artis-tau1-statusreporter.service
+```
 * Start the service: `systemctl start artis-tau1-statusreporter`
 * Flag service to be started on boot: `systemctl enable artis-tau1-statusreporter`
 
