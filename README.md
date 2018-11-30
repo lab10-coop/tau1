@@ -109,7 +109,7 @@ Once you have Metamask installed:
 
 In order to transact with the network, you need ATS for tx fees.  
 There's a faucet for that: call
-http://faucet.tau1.artis.network/addr/<ADDRESS_TO_BE_FUNDED>  
+http://faucet.tau1.artis.network/ats/<ADDRESS_TO_BE_FUNDED>  
 (replace <ADDRESS_TO_BE_FUNDED> with the address of the account you want to get ATS for).  Every call triggers a transfer of 1 ATS.  
 
 # About
