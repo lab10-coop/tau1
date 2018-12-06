@@ -3,7 +3,7 @@
 set -e
 set -u
 
-BIN_LINUX="https://releases.parity.io/v2.1.6/x86_64-unknown-linux-gnu/parity"
+BIN_LINUX="https://releases.parity.io/ethereum/v2.1.6/x86_64-unknown-linux-gnu/parity"
 SHA256_LINUX="542f18da9e4291d98938d3c59cd87c1798bf9b4b7e535cf3321c848934fbdbdb"
 
 BIN_DARWIN="https://releases.parity.io/v2.1.6/x86_64-apple-darwin/parity"
