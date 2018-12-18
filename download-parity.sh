@@ -25,7 +25,7 @@ function check_integrity {
 	if [[ $file_checksum != $expected_checksum ]]; then
 		echo "### Checksum verification failed. calculated: $file_checksum | expected: $expected_checksum"
 		rm parity
-		giving_up
+		giving_up ""
 	fi
 }
 
