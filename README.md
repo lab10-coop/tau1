@@ -117,7 +117,7 @@ Now you _could_ run it with
 
 If you installed a service for parity, you should do the same for this application. With root privileges, do:
 * Copy `artis-tau1-statusreporter.service.example` to `/etc/systemd/system/artis-tau1-statusreporter.service`.
-* Open the copied file and adapt it to your needs. Important: set something for _INSTANCE_NAME_ and _CONTACT_DETAILS_ and then uncomment both.
+* Open the copied file and adapt it to your needs. Important: set values for _INSTANCE_NAME_ and _CONTACT_DETAILS_ and then uncomment both. Please use `<nick>.tau1.artis.network` as value for _INSTANCE_NAME_ - replace `<nick>` with a nickname of your choice (using ASCII characters and digits only). Example: randomguy.tau1.artis.network
 * Start the service: `systemctl start artis-tau1-statusreporter`
 * Flag service to be started on boot: `systemctl enable artis-tau1-statusreporter`
 
