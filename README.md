@@ -91,8 +91,7 @@ If you don't have it installed, your options depend on the operating system.
 
 _Ubuntu 18.04_:  
 ```
-apt install nodejs
-apt install npm
+apt install nodejs npm
 ```
 
 _Ubuntu 16.04_:  
