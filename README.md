@@ -156,7 +156,7 @@ Newer versions of Parity are expected to be compatible (able to sync with this c
 
 ## HF1
 
-This is the first hardfork.  
+This is the first hardfork. It will take place at block 1000000.
 
 ### Why
 
