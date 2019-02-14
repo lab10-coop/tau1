@@ -167,8 +167,9 @@ No such vulnerable smart contract exists on tau1. Nevertheless we apply the chan
 ### How
 
 1.  Update your local copy of this repository with `git pull`
-2.  Execute `./donwload-parity.sh --force`. This updates your parity binary to a new version which understands the change in the chain specification file
-3.  Restart the Parity service with `systemctl restart artis-tau1-parity`
-4.  Make sure the service is running: `systemctl status artis-tau1-parity`
-5.  Restart the node-status-reporter with `systemctl restart artis-tau1-statusreporter`
-6.  Report the executed update to the tau1 trustnode chat channel
+2.  Stop the trustnode with `systemctl stop artis-tau1-parity`
+3.  Execute `./donwload-parity.sh --force`. This updates your parity binary to a new version which understands the change in the chain specification file
+4.  Start the Parity service with `systemctl start artis-tau1-parity`
+5.  Make sure the service is running: `systemctl status artis-tau1-parity`
+6.  Restart the node-status-reporter with `systemctl restart artis-tau1-statusreporter`
+7.  Report the executed update to the tau1 trustnode chat channel
