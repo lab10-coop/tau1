@@ -152,16 +152,18 @@ It makes use of several open source contributions of the fantastic Ethereum comm
 For convenience, this directory contains a script downloading a binary provided by Paritytech. Instructions for building from source can be found [here](https://github.com/paritytech/parity-ethereum).  
 Newer versions of Parity are expected to be compatible (able to sync with this chain). Versions older than 2.0.8 are known to be incompatible with this chain.
 
-# Updates
+# Network Upgrades
+
+This section lists upgrades which are mandatory for nodes to remain synced with the chain.
 
 ## HF1
 
-This is the first hardfork. It will take place at block 1000000.
+Scheduled for block 1000000.
 
 ### Why
 
 It disables [EIP-1283](https://eips.ethereum.org/EIPS/eip-1283).  
-EIP-1283 was enabled from the start on tau1, because it was expected to also be enabled on Ethereum with the Constantinople HF. However, briefly before that scheduled HF, it was discovered that EIP-1283 [enables a new reentrancy attack](https://medium.com/chainsecurity/constantinople-enables-new-reentrancy-attack-ace4088297d9). As explained in that article, this attack is possible only in the context of a smart contract with very specific properties (basically, if the recommended [Checks-Effects-Interactions-Pattern](https://solidity.readthedocs.io/en/v0.5.2/security-considerations.html#use-the-checks-effects-interactions-pattern) is not applied).  
+EIP-1283 was enabled from the start on tau1, because it was expected to also be enabled on Ethereum with the Constantinople Hard Fork (HF). However, briefly before that scheduled HF, it was discovered that EIP-1283 [enables a new reentrancy attack](https://medium.com/chainsecurity/constantinople-enables-new-reentrancy-attack-ace4088297d9). As explained in that article, this attack is possible only in the context of a smart contract with very specific properties (basically, if the recommended [Checks-Effects-Interactions-Pattern](https://solidity.readthedocs.io/en/v0.5.2/security-considerations.html#use-the-checks-effects-interactions-pattern) is not applied).  
 No such vulnerable smart contract exists on tau1. Nevertheless we apply the change in order to keep the EVM configuration as similar as possible to that of Ethereum. In this case, it's about keeping the amount of gas consumed by transactions the same across networks - with EIP-1283 enabled, many transactions consume less gas.
 
 ### How
