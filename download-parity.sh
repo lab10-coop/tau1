@@ -3,13 +3,13 @@
 set -e
 set -u
 
-VERSION="2.5.7"
+VERSION="2.5.9"
 
 BIN_LINUX="https://releases.parity.io/ethereum/v$VERSION/x86_64-unknown-linux-gnu/parity"
-SHA256_LINUX="733943599b64b38f9fb580394ce7486d0d028bf3241a37e1ca59fa14c4683c79"
+SHA256_LINUX="3089290d2ec46f324e6331b9cee0adc91a039bd6173bb2b3a0d70291281cb7f7"
 
 BIN_DARWIN="https://releases.parity.io/ethereum/v$VERSION/x86_64-apple-darwin/parity"
-SHA256_DARWIN="2ca943b20350285c2bac1e8ce4747e42f5ac45b9ed5bacf58cb4b0273b70e501"
+SHA256_DARWIN="545b57d452137225e259b196ba6a34e05cb0fa28585ca10c91ac27efc8157405"
 
 # param_1: message to be printed before exiting
 function giving_up {
