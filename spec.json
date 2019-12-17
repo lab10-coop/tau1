@@ -38,7 +38,11 @@
     "eip1052Transition": "0x0",
     "eip1283Transition": "0x0",
     "eip1283DisableTransition": "1000000",
-    "wasmActivationTransition": "0x0"
+    "eip1283ReenableTransition": 4988200,
+    "eip1344Transition": 4988200,
+    "eip1706Transition": 4988200,
+    "eip1884Transition": 4988200,
+    "eip2028Transition": 4988200
   },
   "genesis": {
     "seal": {
@@ -52,7 +56,7 @@
     "extraData": "0x781892197f53fe153b9f0991a7c9f80750171cbbf6dde5cce1058832b029dda5"
   },
   "accounts": {
-    "0000000000000000000000000000000000000005": {
+    "0x0000000000000000000000000000000000000005": {
       "builtin": {
         "name": "modexp",
         "activate_at": "0x0",
@@ -63,11 +67,11 @@
         }
       }
     },
-    "0000000000000000000000000000000000000006": {
+    "0x0000000000000000000000000000000000000006": {
       "builtin": {
         "name": "alt_bn128_add",
-        "activate_at": "0x0",
-        "eip1108_transition": "0x7fffffffffffff",
+        "activate_at": "0x00",
+        "eip1108_transition": "4988200",
         "pricing": {
           "alt_bn128_const_operations": {
             "price": 500,
@@ -76,11 +80,11 @@
         }
       }
     },
-    "0000000000000000000000000000000000000007": {
+    "0x0000000000000000000000000000000000000007": {
       "builtin": {
         "name": "alt_bn128_mul",
-        "activate_at": "0x0",
-        "eip1108_transition": "0x7fffffffffffff",
+        "activate_at": "0x00",
+        "eip1108_transition": "4988200",
         "pricing": {
           "alt_bn128_const_operations": {
             "price": 40000,
@@ -89,17 +93,28 @@
         }
       }
     },
-    "0000000000000000000000000000000000000008": {
+    "0x0000000000000000000000000000000000000008": {
       "builtin": {
         "name": "alt_bn128_pairing",
-        "activate_at": "0x0",
-        "eip1108_transition": "0x7fffffffffffff",
+        "activate_at": "0x00",
+        "eip1108_transition": "4988200",
         "pricing": {
           "alt_bn128_pairing": {
             "base": 100000,
             "pair": 80000,
             "eip1108_transition_base": 45000,
             "eip1108_transition_pair": 34000
+          }
+        }
+      }
+    },
+    "0x0000000000000000000000000000000000000009": {
+      "builtin": {
+        "name": "blake2_f",
+        "activate_at": "4988200",
+        "pricing": {
+          "blake2_f": {
+            "gas_per_round": 1
           }
         }
       }
