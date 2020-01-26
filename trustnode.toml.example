@@ -11,7 +11,7 @@ identity =
 
 [network]
 allow_ips = "public"
-reserved_peers="bootnodes.txt"
+reserved_peers = "bootnodes.txt"
 
 [account]
 password = [ "password.txt" ]
