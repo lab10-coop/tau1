@@ -3,10 +3,11 @@
 set -e
 set -u
 
-VERSION="2.5.9-0.1.2"
+# source: https://github.com/poanetwork/open-ethereum/tree/v2.7.2-posdao-stable
+VERSION="2.7.2-posdao-stable"
 
-BIN_LINUX="http://dev.lab10.io/artis/parity-posdao-2.5.9-0.1.2"
-SHA256_LINUX="05b0c9b6305996b5db331298a39eaee1db35549bfb7096b7f562f2bfbbd37955"
+BIN_LINUX="http://dev.lab10.io/artis/parity-${VERSION}"
+SHA256_LINUX="3d71fb3a0edafa21c0ac66301562a36e0ce5b340a1884cd3d83fcdc0402c1164"
 
 # param_1: message to be printed before exiting
 function giving_up {
