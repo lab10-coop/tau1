@@ -14,6 +14,10 @@ cd tau1
 
 ## Run a trustnode
 
+A _trustnode_ or _validator node_ is a node which does not just passively sync and verify the chain, but also actively participates in the consensus protocol and co-authors blocks.  
+The current version of the tau1 testnet is configured to use the [Aura consensus algorithm](https://openethereum.github.io/wiki/Aura.html) together with [POSDAO](https://openethereum.github.io/wiki/Aura.html), a smart contract based protocol for permissionless management of consensus protocol participants.  
+In its previos version, tau1 employed [voting based governance contracts](https://github.com/lab10-coop/artis-network-consensus-contracts) for managing consensus protocol participants. The sigma1 mainnet still uses that mechanism, but will also be upgraded to POSDAO in the future.
+
 **Create a user**  
 This step is optional.  
 For the smoothest setup journey (least changes necessary), create a user named "artis".  
@@ -56,12 +60,6 @@ Make sure the contained IP address is Internet routable (if your host system has
 
 If Parity started syncing the chain, you can stop it with Ctrl-C and proceed with the next step.
 
-Warning: When starting a trustnode which isn't yet allowed to create blocks, you may see entries like this in the parity log:
-```
-Dec 11 12:32:05 your.hostname parity[7400]: 2018-12-11 12:32:05 UTC Closing the block failed with error Error(Engine(FailedSystemCall("Cannot decode address[]")), State { next_error: None, backtrace: InternalBacktrace { backtrace: None } }). This is likely an error in chain specificiations or on-chain consensus smart contracts.
-```
-Don't worry, this is without consequences and usually goes away once your trustnode starts producing blocks (which is the case once your _mining key_ was added to the [validator set](https://wiki.parity.io/Validator-Set.html)).
-
 **Keep running**  
 A trustnode is supposed to be always on, thus running it in an interactive shell isn't the best option.  
 This repository includes a systemd template config you can use to make parity a system service.  
@@ -73,6 +71,31 @@ The following steps require root privileges (sudo).
 
 Finally, make sure the service is running: `systemctl status artis-tau1-parity`.  
 In order to see a live log, do `journalctl -f -u artis-tau1-parity` (Ctrl-C will get you back).
+
+**Create staking account**
+
+As tau1 validator, you need a _staking address_ aka _pool address_.  
+We recomment to set up that account in Metamask (see instructions below for how to set up Metamask).  
+
+**Get collateral**
+
+In order to avoid trivial sybil attacks in this permissionless setting, validator nodes need to stake at least 750000 ATS. 
+You can get those testnet ATS by sending an E-Mail request to [tau1@artis.eco](mailto:tau1@artis.eco?subject="request for tau1 staking collateral"). Please provide your staking address, the ATS will be needed on that account.
+
+**Activate**
+
+In order to activate your validator node, the following prerequisites must be met:
+* your node is running and synced and you know its _mining address_
+* you have Metamask set up and pointed to tau1 (see instructions below)
+* you have Metamask set to the _staking account_
+* your _staking account_ has a balance of at least 750000 ATS
+
+Now you can go to http://posdao-ui.dev.lab10.io/ - give it a few seconds to load.  
+Once it has loaded, you should see something like this: (TODO: add screenshot)  
+At the bottom of the page, there is a form for adding a new _Pool_ (aka _validator_). The _pool address_ is already set according to the account set in Metamask. You only need to enter the _mining address_ of your validator node and then click _Add Pool_. After confirming the transaction in Metamask, your validator node will be added to as a _candidate_ and may be chosen as active validator in any subsequent staking epoch.  
+
+Note that if your validator node repeatedly fails to author valid blocks when it's supposed to - e.g. because it's offline, it will be reported as misbehaving by other nodes and removed from the list of active candidates.  
+In order to make it elegible as activate validator again, you need to increase the stake by at least 1 ATS.
 
 ## get listed in status dashboard
 
