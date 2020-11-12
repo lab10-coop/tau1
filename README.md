@@ -154,9 +154,12 @@ You can check the status of the service with `systemctl status artis-tau1-status
 Once you have Metamask installed:
 * Open and unlock Metamask
 * Click the _Networks_ dropdown and choose _Custom RPC_
+* For _Network Name_, enter "ARTIS tau1"
 * For _RPC URL_, enter "http://rpc.tau1.artis.network"
-* (optional, but convenient) Click _show advanced options_, then enter "ATS" for _Symbol_ and "ARTIS tau1" for _Nickame_
-* Click _SAVE_
+* For _Chain ID_, enter "0x3c401"
+* For _symbol_, enter "ATS"
+* For _Block Explorer URL", enter "https://explorer.tau1.artis.network"
+* Click _Save_
 
 <img src="metamask_config_screenshot.png" width="400px">
 
